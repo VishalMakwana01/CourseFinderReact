@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import * as actions from "../actions/action"
 class Courses extends Component {
     state = {
-        courses: []
+        courses: [],
+        data: {
+            email: "vishal.makwana3@gmail.com",
+            password: "abc123"
+        }
     }
-    componentWillMount() {
-        fetch("/courses")
+    /* componentDidMount() {
+        fetch("/graph/regions")
             .then(res => res.json())
             .then(data => {
                 this.setState({ courses: data })
             })
+    } */
+    componentDidMount() {
+        //this.props.login()
     }
     render() {
         console.log(this.state.courses)
@@ -25,5 +34,11 @@ class Courses extends Component {
         );
     }
 }
+const mapStatetoProps = (state) => {
+    console.log(state)
+    return {
+        courses: state.courses
+    }
+}
 
-export default Courses;
+export default connect(mapStatetoProps, actions)(Courses);
