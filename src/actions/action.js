@@ -14,7 +14,10 @@ export const login = body => async dispatch => {
     })
         .then(res => res.json())
         .then(response => {
-            console.log(response);
+            dispatch({
+                type: "LOGIN_RESP",
+                payload: response
+            })
         })
         .catch(e => {
             dispatch({

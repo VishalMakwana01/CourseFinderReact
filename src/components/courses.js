@@ -5,6 +5,7 @@ class Courses extends Component {
     state = {
         courses: [],
         data: {
+            type: "student",
             email: "vishal.makwana3@gmail.com",
             password: "abc123"
         }
@@ -17,10 +18,10 @@ class Courses extends Component {
             })
     } */
     componentDidMount() {
-        //this.props.login()
+        //this.props.login(this.state.data)
     }
     render() {
-        console.log(this.state.courses)
+
         return (
             <>
                 {this.state.courses.map(course => (
