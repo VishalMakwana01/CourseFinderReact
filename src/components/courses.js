@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as actions from "../actions/action"
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+
 class Courses extends Component {
     state = {
-        courses: [],
+        courses: [{
+            name: "Yash",
+            type:"video",
+            url: "google.com",
+            sourceName: "Coursera",
+            author: "Andrew NG",
+            duration: "32 mins"
+        }],
         data: {
             type: "student",
             email: "vishal.makwana3@gmail.com",
@@ -20,15 +30,29 @@ class Courses extends Component {
     componentDidMount() {
         //this.props.login(this.state.data)
     }
+
     render() {
 
         return (
             <>
                 {this.state.courses.map(course => (
                     <>
-                        <h1>{course.Name}</h1>
-                        <h3>{course.Type}</h3>
-                        <a href={course.Url}>Link</a>
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src="holder.js/100px180" />
+                            <Card.Body>
+                            <Card.Title>{this.state.name}</Card.Title>
+                                <Card.Text>
+                                    {`Author: ${course.author}\n${course.sourceName}\nDuration: ${course.duration}`}
+                                </Card.Text>
+                                <Card.Text>
+                                    {`${course.sourceName}`}
+                                </Card.Text>
+                                <Card.Text>
+                                    {`Author: ${course.author}`}
+                                </Card.Text>
+                                <Button variant="primary">Enroll</Button>
+                            </Card.Body>
+                        </Card>
                     </>
                 ))}
             </>
